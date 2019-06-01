@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Base</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+  </head>
+
+  <body>
+
+    <nav class= "navbar navbar-dark bg-dark">
+      <div class="container">
+        <ul class='nav'>
+          <!-- due to above class showing vertival nav -->
+
+           <li class="navbar-brand"><a href="{% url 'index' %}">Django</a></li>
+          <li class="navbar-link"><a href="{% url 'admin:index' %}">Admin </a><br></li>
+          <li class="navbar-link"><a href="{% url 'userapp:register' %}"> Register</a></li>
+
+            </ul>
+      </div>
+    </nav>
+
+
+    <div class="container">
+      {% block body_block %}
+      {% endblock %}
+    </div>
+
+
+  </body>
+</html>
