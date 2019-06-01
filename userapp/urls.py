@@ -8,5 +8,6 @@ app_name='userapp'
 
 urlpatterns=[
 # url(r'^register/$',views.register,name='register'),
-path('register/',views.register,name='register')
+path('register/',views.register,name='register'),
+path('user_login/',views.user_login,name='user_login')
 ]
