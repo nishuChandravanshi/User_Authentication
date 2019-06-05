@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 # from django.core.urlresolvers import reverse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 
 
 
@@ -19,7 +20,7 @@ from django.contrib.auth.decorators import login_required
 def index(request):
     return render(request,'userapp/index.html')
 
-
+@csrf_exempt
 def register(request):
     registered= False
     if request.method=="POST":
@@ -53,7 +54,7 @@ def register(request):
                             'registered':registered})
 
 
-
+@csrf_exempt
 def user_login(request):
 
 
@@ -67,10 +68,12 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                return HttpResponseRedirect(reverse('index'))
+                return HttpResponseRedirect(reverse('dashboard'))
+                # return HttpResponseRedirect(reverse('index'))
 
             else:
-                return HttpResponse("Account Not active")
+                # return HttpResponse("Account Not active")
+                return HttpResponseRedirect(reverse('user_login'))
         else:
             print("Someone tried to login and failed!")
             print("Username: {} and password{}".format(username,password))
@@ -88,3 +91,10 @@ def special(request):
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
+
+
+@login_required
+def dashboard(request):
+    return render(request, 'userapp/dashboard.html')
+     # HttpResponseRedirect(reverse('dashboard'))
+      # HttpResponse('dashboard')
