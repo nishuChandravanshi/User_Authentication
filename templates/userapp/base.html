@@ -28,7 +28,7 @@
             <a class="nav-link" href="{% url 'userapp:register' %}">Signup <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            <!-- <a class="nav-link" href="{% url 'admin:index' %}">Admin</a> -->
           </li>
 
           {% if user.is_authenticated %}  <!--from views;; user = authenticate('')::user.is_authenticated func works to check if the user is authenticated  -->

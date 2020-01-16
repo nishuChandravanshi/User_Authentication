@@ -87,7 +87,7 @@ def special(request):
 
 
 
-@login_required
+@login_required 
 def user_logout(request):
     logout(request)
     return HttpResponseRedirect(reverse('index'))
